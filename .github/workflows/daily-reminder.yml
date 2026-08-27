@@ -2,10 +2,10 @@ name: Daily Project Reminder
 
 on:
   schedule:
-    # All times UTC. Adjust the hours below for your timezone / preferred send times.
-    - cron: "0 14 * * *"   # ~7:00 AM Pacific (PDT) -> morning message
-    - cron: "0 20 * * *"   # ~1:00 PM Pacific (PDT) -> afternoon message
-    - cron: "0 3 * * *"    # ~8:00 PM Pacific (PDT, previous day UTC) -> evening message
+    # All times UTC. Hours below target Eastern Daylight Time (UTC-4).
+    - cron: "0 10 * * *"   # 6:00 AM ET -> morning message
+    - cron: "0 16 * * *"   # 12:00 PM ET -> afternoon message
+    - cron: "0 20 * * *"   # 4:00 PM ET -> evening message
   workflow_dispatch:
     inputs:
       slot:
@@ -40,9 +40,9 @@ jobs:
             echo "slot=${{ github.event.inputs.slot }}" >> "$GITHUB_OUTPUT"
           else
             case "${{ github.event.schedule }}" in
-              "0 14 * * *") echo "slot=morning" >> "$GITHUB_OUTPUT" ;;
-              "0 20 * * *") echo "slot=afternoon" >> "$GITHUB_OUTPUT" ;;
-              "0 3 * * *") echo "slot=evening" >> "$GITHUB_OUTPUT" ;;
+              "0 10 * * *") echo "slot=morning" >> "$GITHUB_OUTPUT" ;;
+              "0 16 * * *") echo "slot=afternoon" >> "$GITHUB_OUTPUT" ;;
+              "0 20 * * *") echo "slot=evening" >> "$GITHUB_OUTPUT" ;;
               *) echo "slot=morning" >> "$GITHUB_OUTPUT" ;;
             esac
           fi

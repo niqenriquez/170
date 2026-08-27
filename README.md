@@ -101,14 +101,14 @@ Go to the **Actions** tab in your repo → **Daily Project Reminder** workflow �
 
 ## 7. Adjust the send times (optional)
 
-The workflow runs 3 times a day, set (by default) to roughly:
-- 7:00 AM Pacific → morning
-- 1:00 PM Pacific → afternoon
-- 8:00 PM Pacific → evening
+The workflow runs 3 times a day, currently set to:
+- 6:00 AM Eastern → morning
+- 12:00 PM Eastern → afternoon
+- 4:00 PM Eastern → evening
 
 Edit the three `cron` lines in `.github/workflows/daily-reminder.yml` if you want different times. Cron schedules in GitHub Actions are always in **UTC**, so convert your desired local time to UTC first. If you change a cron line, also update the matching line in the "Determine which slot to send" step so it still maps to the right slot — the two need to stay in sync.
 
-Note: Pacific Time shifts between PDT (UTC-7, summer) and PST (UTC-8, winter). The times above assume PDT; during PST everything will land about an hour later than intended unless you adjust the cron hours seasonally.
+Note: Eastern Time shifts between EDT (UTC-4, summer) and EST (UTC-5, winter). The cron hours above assume EDT, so once the clocks go back in November the messages will arrive an hour early — 5:00 AM, 11:00 AM, and 3:00 PM — until you add an hour to each cron line.
 
 ## 8. Workout split auto-sync from Apple Notes (optional)
 
