@@ -1,0 +1,43 @@
+{
+  "default": {
+    "morning": "No specific focus set for today — pick something and go.",
+    "afternoon": "Checking in — how's today's focus coming along?",
+    "evening": "Wrap-up time — how did today go?"
+  },
+
+  "01-01": {
+    "morning": "Example: Kick off Project A — outline the roadmap.",
+    "afternoon": "Example: Have you drafted the first milestone yet?",
+    "evening": "Example: Reflect — what's the next step for Project A tomorrow?"
+  },
+
+  "08-27": {
+    "morning": "Good morning. Regardless of your sleep score, remember that today is a new day. Today's workout: Tai Chi, mobility (rest day). Purchase ruler, and create one draft of the STEJAL lock model one. If you have time, send it to Mitch.",
+    "afternoon": "Be Ready at any moment to sacrifice who you are for what you want to become.\nHave you made progress on the STEJAL lock model one? If you have time, send it to Mitch. Don't forget to send the rent to Julie",
+    "evening": "Practice patience with progress. You are in the middle of what you prayed for.\nI know you got more in you. You make a decision whether you are going to be at your full potential or not.\nDon't be a loser. You are better than that. When you go to the gym, avoid distractions. Focus on your goals.\nYou WANTED to train. YOU WANTED to be a better woman.\nYou WANTED to be focused. So of course those things aren't going to be instant.\n\nPrepare suitcase for friday moveout. Don't eat after 6PM because you don't want to ruin your muscle recovery."
+  },
+
+  "08-28": {
+    "morning": "Hey Atlas. Today is a new day. You have a choice to make.\nAre you going to let the past define your future?\nAre you going to worry about people that no longer care about you?\nRemember, everything happens in the present. Memories are created in the present.\nWhat you do today is what creates your future.\n\nGod didn't give you the easy path. He gave you the path of growth.\n\nNow, for the day.\nYou can do breath work, journaling, or EFT tapping.\nLets drink some water.\n\nOk, for a reminder, todays workout is Chest, Triceps, and Shoulders.\nWe also have a two mile run in the morning. So drink extra water and the rice cakes before hand. We are trying to hit food every three hours for muscle protein synthesis.\n\nother things to consider:\n- send rent to Julie if you haven't already\n- send STEJAL lock model one to Mitch if you have time\n\nThat's it for now. Have a great day!\n\nSend final rent to Julie",
+    "afternoon": "If you have time, send it to Mitch.",
+    "evening": "Make oatmeal for Friday's breakfast."
+  },
+
+  "08-29": {
+    "morning": "Send final rent to Julie",
+    "afternoon": "If you have time, send it to Mitch.",
+    "evening": "Make oatmeal for Friday's breakfast."
+  },
+
+  "08-30": {
+    "morning": "Send final rent to Julie",
+    "afternoon": "If you have time, send it to Mitch.",
+    "evening": "Make oatmeal for Friday's breakfast."
+  },
+
+  "08-31": {
+    "morning": "Send final rent to Julie",
+    "afternoon": "If you have time, send it to Mitch.",
+    "evening": "Make oatmeal for Friday's breakfast."
+  }
+}
