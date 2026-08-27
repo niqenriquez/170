@@ -1,0 +1,55 @@
+name: Daily Project Reminder
+
+on:
+  schedule:
+    # All times UTC. Adjust the hours below for your timezone / preferred send times.
+    - cron: "0 14 * * *"   # ~7:00 AM Pacific (PDT) -> morning message
+    - cron: "0 20 * * *"   # ~1:00 PM Pacific (PDT) -> afternoon message
+    - cron: "0 3 * * *"    # ~8:00 PM Pacific (PDT, previous day UTC) -> evening message
+  workflow_dispatch:
+    inputs:
+      slot:
+        description: "Which message to send (for manual testing)"
+        required: false
+        default: "morning"
+        type: choice
+        options:
+          - morning
+          - afternoon
+          - evening
+
+jobs:
+  send-reminder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Determine which slot to send
+        id: slot
+        run: |
+          if [ -n "${{ github.event.inputs.slot }}" ]; then
+            echo "slot=${{ github.event.inputs.slot }}" >> "$GITHUB_OUTPUT"
+          else
+            case "${{ github.event.schedule }}" in
+              "0 14 * * *") echo "slot=morning" >> "$GITHUB_OUTPUT" ;;
+              "0 20 * * *") echo "slot=afternoon" >> "$GITHUB_OUTPUT" ;;
+              "0 3 * * *") echo "slot=evening" >> "$GITHUB_OUTPUT" ;;
+              *) echo "slot=morning" >> "$GITHUB_OUTPUT" ;;
+            esac
+          fi
+
+      - name: Send reminder
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SLOT: ${{ steps.slot.outputs.slot }}
+        run: python send_reminder.py
