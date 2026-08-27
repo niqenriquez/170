@@ -4,8 +4,9 @@ Telegram reminder with a year-end countdown, sent up to 3x/day.
 
 Reads today's project info from topics.json (keyed by "MM-DD"), where
 each date maps to an object with "morning" / "afternoon" / "evening"
-messages. Falls back to "default" if today isn't listed. Which slot
-gets sent is controlled by the SLOT environment variable.
+messages. Each message is either a string or a list of lines. Falls
+back to "default" if today isn't listed. Which slot gets sent is
+controlled by the SLOT environment variable.
 """
 
 import json
@@ -37,9 +38,16 @@ def get_todays_entry(today: date) -> dict:
     return topics.get("default", {})
 
 
+def render(value) -> str:
+    """A slot may be a plain string or a list of lines; "" makes a blank line."""
+    if isinstance(value, list):
+        return "\n".join(value)
+    return value
+
+
 def get_slot_message(entry: dict, slot: str) -> str:
     if slot in entry and entry[slot]:
-        return entry[slot]
+        return render(entry[slot])
     defaults = {
         "morning": "No specific focus set for today — pick something and go.",
         "afternoon": "Checking in — how's today's focus coming along?",

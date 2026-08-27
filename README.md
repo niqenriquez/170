@@ -44,6 +44,34 @@ Edit `topics.json`. Keys are dates in `MM-DD` format (no year — repeats every 
 - You don't need every day filled in — just add what matters.
 - You can omit a slot (e.g. just set `"morning"`) and it'll fall back to the default message for that slot.
 
+### Writing longer messages
+
+JSON strings can't contain real line breaks, so a long pep talk written across
+several lines in the file will make `topics.json` invalid. Instead of cramming it
+onto one unreadable line, write the slot as a **list of lines** — each line stays
+on its own row in the file, and they're joined with line breaks when sent. Use `""`
+for a blank line between paragraphs:
+
+```json
+"08-28": {
+  "morning": [
+    "Hey Atlas. Today is a new day. You have a choice to make.",
+    "Are you going to let the past define your future?",
+    "",
+    "Todays workout is Chest, Triceps, and Shoulders.",
+    "",
+    "other things to consider:",
+    "- send rent to Julie if you haven't already"
+  ],
+  "afternoon": "Short ones can stay a plain string.",
+  "evening": "Make oatmeal for Friday's breakfast."
+}
+```
+
+Both forms work anywhere, so use a plain string for one-liners and a list when you
+want room to write. Watch for two things inside the quotes: a `"` needs to be
+written `\"`, and a `\` needs to be written `\\`. Apostrophes are fine as-is.
+
 ## 4. Put this on GitHub
 
 1. Create a new **private** GitHub repository.
